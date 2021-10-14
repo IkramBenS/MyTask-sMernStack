@@ -1,0 +1,11 @@
+.welcome__container {
+  min-height: 100vh;
+  background: url("../assets/welcome_bg.jpg") center 
+    no-repeat;
+}
+
+@media screen and (max-width: 576px) {
+  .start__learning {
+    margin-top: 0em;
+  }
+}

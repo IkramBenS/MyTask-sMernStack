@@ -1,0 +1,25 @@
+.welcome__containerhome {
+    min-height: 80vh;
+    background: url("../assets/checklist.png") right
+      no-repeat;
+  }
+  h1 {
+    font-family: "Montserrat", sans-serif;
+    font-weight: 700;
+  }
+  
+  h2 {
+    font-family: "Montserrat", sans-serif;
+    font-weight: 200;
+  }
+  .start__learning {
+    margin-top: 8%;
+  }
+  
+  @media screen and (max-width: 576px) {
+    .start__learning {
+      margin-top: 10em;
+    }
+  }
+  
+ 

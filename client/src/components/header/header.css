@@ -1,0 +1,42 @@
+.navbar {
+  background-color: #f4f4f4;
+  z-index: 99;
+}
+
+.form-control {
+  outline: none;
+  background-color: transparent;
+  border-radius: 2rem;
+}
+
+a,
+a:hover {
+  text-decoration: none;
+  color: inherit;
+}
+
+@media only screen and (min-width: 1000px) {
+  .items__dot {
+    position: absolute;
+    color: #fff;
+    font-size: 0.8rem;
+    background-color: #ed143dc2;
+    top: 0;
+    font-weight: 900;
+  }
+}
+
+.items__dot {
+  color: #fff;
+  font-size: 0.8rem;
+  background-color: #ed143dc2;
+
+  font-weight: 900;
+}
+
+.fav__drop__down {
+  max-height: 18rem;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  scroll-behavior: smooth;
+}

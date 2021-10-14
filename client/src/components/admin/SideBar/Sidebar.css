@@ -1,0 +1,44 @@
+.sidebar {
+    flex: 0.2;
+    height: 100%;
+    width: 16rem;
+    background-color: #181152;
+    position: fixed;
+    left: 0;
+    top: 0;
+  }
+  
+  .row__container:hover {
+    background-color: white;
+    transition-delay: 0.8s;
+    transition: 0.5s ease-in-out;
+  }
+  
+  .row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+    height: 5rem;
+    border-bottom: 0.1rem solid white;
+    color: white;
+    font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+      "Lucida Sans", Arial, sans-serif;
+  }
+  
+  .row:hover {
+    cursor: pointer;
+    background-color: #18115286;
+    border-radius: 0 5rem 5rem 0;
+    transition: 0.3s ease-in-out;
+  }
+  
+  .rowicon {
+    flex: 30%;
+    display: grid;
+    place-items: center;
+  }
+  
+  .rowtitle {
+    flex: 70%;
+  }
