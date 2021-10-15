@@ -3,7 +3,7 @@ import isEmail from "validator/lib/isEmail";
 import isEmpty from "validator/lib/isEmpty";
 import equals from "validator/lib/equals";
 import { showErrorMsg, showSuccessMsg } from "../../helpers/message";
-import { signup } from "../../api/auth";
+import { adduser } from "../../api/auth";
 
 function Adduser() {
 
@@ -67,7 +67,7 @@ function Adduser() {
       const data = { username, email, password, title, tel };
       setFormData({ ...formData, loading: true });
 
-      signup(data)
+      adduser(data)
      
         .then((response) => {
           setFormData({

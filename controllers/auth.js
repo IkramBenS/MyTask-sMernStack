@@ -1,9 +1,41 @@
 const User = require("../models/User");
+const Adminuser = require("../models/Adminuser");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const { jwtSecret, jwtExpire } = require("../config/keys"); 
 
 exports.signupController = async (req, res) => {
+  const { username, email, password} = req.body;
+
+  try {
+    const adminuser = await Adminuser.findOne({ email }); 
+    if (adminuser) {
+      return res.status(400).json({
+        errorMessage: "Email already exists",
+      });
+    }
+    const newAdminuser = new Adminuser(); 
+    newAdminuser.username = username;
+    newAdminuser.email = email;
+
+    const salt = await bcrypt.genSalt(10);
+  
+    newAdminuser.password = await bcrypt.hash(password, salt);
+    await newAdminuser.save(); 
+
+    res.json({
+      successMessage: "Registration success . Please signin.",
+    });
+  } catch (err) {
+    console.log("signupController error: ", err);
+    res.status(500).json({
+      errorMessage: "Server error",
+    });
+  }
+};
+
+/***************adduser controller *********************/
+exports.adduserController = async (req, res) => {
   const { username, email, password, title, tel } = req.body;
 
   try {
@@ -25,16 +57,15 @@ exports.signupController = async (req, res) => {
     await newUser.save(); 
 
     res.json({
-      successMessage: "Registration success . Please signin.",
+      successMessage: "New user added with success.",
     });
   } catch (err) {
-    console.log("signupController error: ", err);
+    console.log("aadduserController error: ", err);
     res.status(500).json({
       errorMessage: "Server error",
     });
   }
 };
-
 /***************signin controller *********************/
 exports.signinController = async (req, res) => {
   const { email, password } = req.body;

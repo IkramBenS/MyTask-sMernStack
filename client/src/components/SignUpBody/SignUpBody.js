@@ -75,7 +75,7 @@ function SignUpBody() {
             successMsg: response.data.successMessage,
           });
 
-          /* history.push("/login"); */
+      
         })
         .catch((err) => {
           setFormData({
