@@ -9,7 +9,7 @@ export const signup = async (data) => {
   };
 
   const response = await axios.post("/api/auth/signup", data, config);
-  console.log('heeere i am');
+
   return response;
 };
 

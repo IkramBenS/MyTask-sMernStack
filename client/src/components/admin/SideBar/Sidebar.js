@@ -6,19 +6,17 @@ import { Link } from "react-router-dom";
 function Sidebar() {
   return (
     <div className='sidebar'>
-      <ul className='sidebarList'>
+      <ul >
         {SidebarData.map((val, key) => {
           return (
             <div className='row__container'>
-              <li key={key} className='row'>{" "}
-                <Link to={val.path}>
+              <li key={key} className='navbar-toggle'>
+                <Link to={val.path} className='menu-bars'>
                     {val.icon}
                     <span>
                         {val.title}
                     </span>
                 </Link>
-                {/* <div className='rowicon'>{val.icon}</div>{" "}
-                <div className='rowtitle'>{val.title}</div>{" "} */}
               </li>
             </div>
           );

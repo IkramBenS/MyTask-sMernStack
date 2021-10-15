@@ -12,7 +12,7 @@ function LogInBody() {
   let history = useHistory();
   useEffect(() => {
     if (isAuthenticated() && isAuthenticated().role === 1) {
-      history.push("/admin/dashboard");
+      history.push("/adminhome");
     } else if (isAuthenticated() && isAuthenticated().role === 0) {
       history.push("/user/dashboard"); 
 
@@ -62,7 +62,7 @@ function LogInBody() {
 
           if (isAuthenticated() && isAuthenticated().role === 1) {
             console.log("Redirecting to admin dashboard");
-            history.push("/admin/dashboard");
+            history.push("/adminhome");
           } else {
             console.log("Redirecting to user dashboard");
             history.push('/user/dashboard');

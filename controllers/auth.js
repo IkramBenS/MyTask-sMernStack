@@ -4,7 +4,7 @@ const jwt = require("jsonwebtoken");
 const { jwtSecret, jwtExpire } = require("../config/keys"); 
 
 exports.signupController = async (req, res) => {
-  const { username, email, password } = req.body;
+  const { username, email, password, title, tel } = req.body;
 
   try {
     const user = await User.findOne({ email }); 
@@ -16,6 +16,8 @@ exports.signupController = async (req, res) => {
     const newUser = new User(); 
     newUser.username = username;
     newUser.email = email;
+    newUser.title = title;
+    newUser.tel = tel;
 
     const salt = await bcrypt.genSalt(10);
   
@@ -78,5 +80,7 @@ exports.signinController = async (req, res) => {
       errorMessage: "Server error",
     });
   }
-}; 
+};
+
+
 

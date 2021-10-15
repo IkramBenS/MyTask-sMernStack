@@ -1,25 +1,41 @@
 import React from "react";
-import DashboardIcon from "@material-ui/icons/Dashboard";
-import MenuBookIcon from "@material-ui/icons/MenuBook";
-import MonetizationOnIcon from "@material-ui/icons/MonetizationOn";
-import PersonIcon from "@material-ui/icons/Person";
+import HomeIcon from '@material-ui/icons/Home';
+import PersonAddIcon from '@material-ui/icons/PersonAdd';
+import AssignmentIcon from '@material-ui/icons/Assignment';
+import PlaylistAddRoundedIcon from '@material-ui/icons/PlaylistAddRounded';
+import CloudDoneIcon from '@material-ui/icons/CloudDone';
+import CommentOutlinedIcon from '@material-ui/icons/CommentOutlined';
+import FolderIcon from '@material-ui/icons/Folder';
 
 export const SidebarData = [
   {
     title: "Home",
     path: '/adminhome',
-    icon: <DashboardIcon />,
+    icon: <HomeIcon />,
   },
   {
     title: "Add user",
-    icon: <MenuBookIcon />,
+    icon: <PersonAddIcon />,
+    path: '/adduser',
   },
   {
     title: "Assign task",
-    icon: <MonetizationOnIcon />,
+    icon: <PlaylistAddRoundedIcon />,
+  },
+  {
+    title: "Projects",
+    icon: <FolderIcon />,
+  },
+  {
+    title: "Tasks",
+    icon: <AssignmentIcon />,
   },
   {
     title: "Completed",
-    icon: <PersonIcon />,
+    icon: <CloudDoneIcon />,
+  },
+  {
+    title: "Chat",
+    icon: <CommentOutlinedIcon />,
   },
 ];
