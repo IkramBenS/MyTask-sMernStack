@@ -25,5 +25,5 @@ const AdminuserSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-const Adminuser = mongoose.model("AdminuserSchema", AdminuserSchema);
+const Adminuser = mongoose.model("Adminuser", AdminuserSchema);
 module.exports = Adminuser;

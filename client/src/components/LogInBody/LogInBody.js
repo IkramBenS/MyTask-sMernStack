@@ -58,7 +58,7 @@ function LogInBody() {
       setFormData({ ...formData, loading: true });
       signin(data)
         .then((response) => {
-          setAuthentication(response.data.token, response.data.user);
+          setAuthentication(response.data.token, response.data.adminuser);
 
           if (isAuthenticated() && isAuthenticated().role === 1) {
             console.log("Redirecting to admin dashboard");
@@ -66,7 +66,7 @@ function LogInBody() {
           } else {
             console.log("Redirecting to user dashboard");
             history.push('/user/dashboard');
-            /* console.log(getLocalStorage()); */
+            
           }
         })
         .catch((err) => {
@@ -80,7 +80,6 @@ function LogInBody() {
     }
   };
 
-  
   /*******************************************
    *VIEWS
    *******************************************/

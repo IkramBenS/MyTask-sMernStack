@@ -71,14 +71,14 @@ exports.signinController = async (req, res) => {
   const { email, password } = req.body;
 
   try {
-    const user = await User.findOne({ email });
-    if (!user) {
+    const adminuser = await Adminuser.findOne({ email });
+    if (!adminuser) {
       return res.status(400).json({
         errorMessage: "Invalid credentials",
       });
     }
 
-    const isMatch = await bcrypt.compare(password, user.password);
+    const isMatch = await bcrypt.compare(password, adminuser.password);
     if (!isMatch) {
       return res.status(400).json({
         errorMessage: "Invalid credentials",
@@ -86,8 +86,8 @@ exports.signinController = async (req, res) => {
     }
 
     const payload = {
-      user: {
-        _id: user._id,
+      adminuser: {
+        _id: adminuser._id,
       },
     };
 
@@ -97,11 +97,11 @@ exports.signinController = async (req, res) => {
       { expiresIn: jwtExpire },
       (err, token) => {
         if (err) console.log("jwt error:", err);
-        const { _id, username, email, role } = user;
+        const { _id, username, email, role } = adminuser;
 
         res.json({
           token,
-          user: { _id, username, email, role },
+          adminuser: { _id, username, email, role },
         });
       }
     );
