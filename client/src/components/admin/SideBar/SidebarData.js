@@ -21,6 +21,8 @@ export const SidebarData = [
   {
     title: "Assign task",
     icon: <PlaylistAddRoundedIcon />,
+    path: '/assigntask',
+
   },
   {
     title: "Projects",

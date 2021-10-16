@@ -18,6 +18,7 @@ import AdduserPage from "./pages/AdduserPage/AdduserPage";
 // Routes
 import UserRoute from "./components/user/UserRoute";
 import AdminRoute from "./components/admin/AdminRoute";
+import AssigntaskPage from "./pages/AssigntaskPage/AssigntaskPage";
 
 
 const App = () => (
@@ -33,6 +34,8 @@ const App = () => (
 
           <AdminRoute exact path="/adminhome" component={AdminHome} />
           <Route exact path="/adduser" component={AdduserPage} />
+          <Route exact path="/assigntask" component={AssigntaskPage} />
+
 
       </Switch>
     </main>

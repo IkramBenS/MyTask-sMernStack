@@ -6,7 +6,6 @@ import { showErrorMsg, showSuccessMsg } from "../../helpers/message";
 import { adduser } from "../../api/auth";
 
 function Adduser() {
-
   const [formData, setFormData] = useState({
     username: "",
     email: "",
@@ -19,8 +18,16 @@ function Adduser() {
     loading: false,
   });
 
-  const { username, email, password, password2, title, tel, successMsg, errorMsg } =
-    formData;
+  const {
+    username,
+    email,
+    password,
+    password2,
+    title,
+    tel,
+    successMsg,
+    errorMsg,
+  } = formData;
 
   /*******************************************
    *EVENT HANDLE
@@ -45,8 +52,7 @@ function Adduser() {
       isEmpty(password) ||
       isEmpty(password2) ||
       isEmpty(title) ||
-      isEmpty(tel) 
-      
+      isEmpty(tel)
     ) {
       setFormData({
         ...formData,
@@ -68,7 +74,6 @@ function Adduser() {
       setFormData({ ...formData, loading: true });
 
       adduser(data)
-     
         .then((response) => {
           setFormData({
             username: "",
@@ -168,7 +173,7 @@ function Adduser() {
           onChange={handleChange}
         />
       </div>
-     
+
       {/* title */}
       <div className="form-group input-group">
         <div className="input-group-prepend">
@@ -203,22 +208,21 @@ function Adduser() {
           onChange={handleChange}
         />
       </div>
-       {/* signup button */}
-       <div className="form-group">
+      {/* signup button */}
+      <div className="modal-footer">
+        <button className="btn Closebtn">Cancel</button>
         <button className="btn Signupbtn" type="submit">
           Submit
         </button>
       </div>
-
-    
     </form>
   );
 
   return (
-          <div className="forum_inputs container">
-            {successMsg && showSuccessMsg(successMsg)}
-            {errorMsg && showErrorMsg(errorMsg)}
-            {showSignupForm()}
+    <div className="forum_inputs container">
+      {successMsg && showSuccessMsg(successMsg)}
+      {errorMsg && showErrorMsg(errorMsg)}
+      {showSignupForm()}
     </div>
   );
 }

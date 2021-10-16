@@ -1,0 +1,27 @@
+.Createbtn {
+    background-color: #43b4f5;
+    color: #fff;
+    font-family: "Montserrat";
+    font-size: 1.2rem;
+    transition: all 0.2s;
+  }
+
+  .Closebtn {
+    background-color: #5f6466;
+    color: #fff;
+    font-family: "Montserrat";
+    font-size: 1.2rem;
+    transition: all 0.2s;
+  }
+  
+  .Createbtn:hover {
+    color: #fff;
+    background-color: #eb3f86;
+  }
+  
+  .text1 {
+    font-family: "Montserrat";
+    font-weight: bold;
+    margin-bottom: 3rem;
+    text-align: center;
+  }
