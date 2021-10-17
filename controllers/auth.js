@@ -71,17 +71,63 @@ exports.signinController = async (req, res) => {
   const { email, password } = req.body;
 
   try {
+    const user = await User.findOne({ email });
+    if (!user) {
+      return res.status(400).json({
+        errorMessage: "Invalid credentials user",
+      });
+    }
+
+    const isMatch = await bcrypt.compare(password, user.password);
+    if (!isMatch) {
+      return res.status(400).json({
+        errorMessage: "Invalid credentials user",
+      });
+    }
+
+    const payload = {
+      user: {
+        _id: user._id,
+      },
+    };
+
+    await jwt.sign(
+      payload,
+      jwtSecret,
+      { expiresIn: jwtExpire },
+      (err, token) => {
+        if (err) console.log("jwt error:", err);
+        const { _id, username, email, role } = user;
+
+        res.json({
+          token,
+          user: { _id, username, email, role },
+        });
+      }
+    );
+  } catch (err) {
+    console.log("signinController error: ", err);
+    res.status(500).json({
+      errorMessage: "Server error",
+    });
+  }
+};
+/***************signin admin controller *********************/
+exports.signinadminController = async (req, res) => {
+  const { email, password } = req.body;
+
+  try {
     const adminuser = await Adminuser.findOne({ email });
     if (!adminuser) {
       return res.status(400).json({
-        errorMessage: "Invalid credentials",
+        errorMessage: "Invalid mail",
       });
     }
 
     const isMatch = await bcrypt.compare(password, adminuser.password);
     if (!isMatch) {
       return res.status(400).json({
-        errorMessage: "Invalid credentials",
+        errorMessage: "Invalid mdp",
       });
     }
 
@@ -112,6 +158,8 @@ exports.signinController = async (req, res) => {
     });
   }
 };
+
+
 
 
 

@@ -5,6 +5,7 @@ import { showErrorMsg } from "../../helpers/message";
 import { setAuthentication, isAuthenticated } from "../../helpers/auth";
 import isEmpty from "validator/lib/isEmpty";
 import isEmail from "validator/lib/isEmail";
+import { signinadmin } from "../../api/auth";
 import { signin } from "../../api/auth";
 import { getLocalStorage } from "../../helpers/localStorage";
 
@@ -52,22 +53,21 @@ function LogInBody() {
         ...formData,
         errorMsg: "Invalid email",
       });
-    } else {
+    }
+     else {
       const { email, password } = formData;
       const data = { email, password };
       setFormData({ ...formData, loading: true });
-      signin(data)
-        .then((response) => {
-          setAuthentication(response.data.token, response.data.adminuser);
 
-          if (isAuthenticated() && isAuthenticated().role === 1) {
-            console.log("Redirecting to admin dashboard");
-            history.push("/adminhome");
-          } else {
+      try {
+        signin(data)
+        .then((response) => {
+          setAuthentication(response.data.token, response.data.user);
+
+          if (isAuthenticated() && isAuthenticated().role === 0) {
             console.log("Redirecting to user dashboard");
-            history.push('/user/dashboard');
-            
-          }
+            history.push('/user/dashboard')
+          } 
         })
         .catch((err) => {
           console.log("signin api function error: ", err);
@@ -77,6 +77,26 @@ function LogInBody() {
             errorMsg: err.response.data.errorMessage,
           });
         });
+        
+      } finally {
+        signinadmin(data)
+        .then((response) => {
+          setAuthentication(response.data.token, response.data.adminuser);
+
+          if (isAuthenticated() && isAuthenticated().role === 1) {
+            console.log("Redirecting to admin dashboard");
+            history.push("/adminhome");
+          } 
+        })
+        .catch((err) => {
+          console.log("signin api function error: ", err);
+          setFormData({
+            ...formData,
+            loading: false,
+            errorMsg: err.response.data.errorMessage,
+          });
+        });
+      }
     }
   };
 
@@ -85,7 +105,7 @@ function LogInBody() {
    *******************************************/
   const showSigninForm = () => (
     <div>
-      <form className="signinForm" onSubmit={handleSubmit} noValidate>
+      <form className="signinForm" noValidate>
         <h3 className="txt1">Welcome Back !</h3>
         {/* email */}
         <div className="form-group input-group">
@@ -123,7 +143,7 @@ function LogInBody() {
 
         {/* signin button */}
         <div className="form-group">
-          <button className="btn mt-3 mb-3 w-100 Signinbtn" type="submit">
+          <button className="btn mt-3 mb-3 w-100 Signinbtn" onClick={handleSubmit} type="submit">
             Log in
           </button>
         </div>

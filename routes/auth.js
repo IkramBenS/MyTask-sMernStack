@@ -12,12 +12,13 @@ const {
 const {
   signupController,
   signinController,
+  signinadminController,
   adduserController,
 } = require("../controllers/auth");
 
 router.post("/signup", signupValidator, validatorResult, signupController);
-router.post("/signin", signinValidator, validatorResult, signinController);
+router.post("/signinuser", signinValidator, validatorResult, signinController);
+router.post("/signinadmin", signinValidator, validatorResult, signinadminController);
 router.post("/adduser", adduserValidator, validatorResult, adduserController);
-
 
 module.exports = router;

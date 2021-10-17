@@ -23,6 +23,7 @@ export const adduser = async (data) => {
   const response = await axios.post("/api/auth/adduser", data, config);
   return response;
 };
+
 //API signin method
 
 export const signin = async (data) => {
@@ -32,8 +33,24 @@ export const signin = async (data) => {
     },
   };
 
-  const response = await axios.post("/api/auth/signin", data, config); 
+  const response = await axios.post("/api/auth/signinuser", data, config);
+  
 
   return response;
 };
+
+//API signin admin method
+
+export const signinadmin = async (data) => {
+  const config = {
+    headers: {
+      "Content-Type": "application/json",
+    },
+  };
+
+  const response = await axios.post("/api/auth/signinadmin", data, config); 
+
+  return response;
+};
+
 
