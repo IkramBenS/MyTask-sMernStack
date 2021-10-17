@@ -19,6 +19,11 @@ export const SidebarData = [
     path: '/adduser',
   },
   {
+    title: "All users",
+    icon: <PersonAddIcon />,
+    path: '/allusers',
+  },
+  {
     title: "Assign task",
     icon: <PlaylistAddRoundedIcon />,
     path: '/assigntask',

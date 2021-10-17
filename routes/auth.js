@@ -13,12 +13,16 @@ const {
   signupController,
   signinController,
   signinadminController,
-  adduserController,
 } = require("../controllers/auth");
+const {adduserController} = require("../controllers/user");
+const {readAll} = require("../controllers/user");
 
 router.post("/signup", signupValidator, validatorResult, signupController);
 router.post("/signinuser", signinValidator, validatorResult, signinController);
 router.post("/signinadmin", signinValidator, validatorResult, signinadminController);
+
 router.post("/adduser", adduserValidator, validatorResult, adduserController);
+
+router.get("/", readAll);
 
 module.exports = router;

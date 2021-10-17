@@ -3,8 +3,7 @@ import React from "react";
 // Components
 
 import Header from "./components/header/Header";
-import Home from "./components/Home";
-import AdminDashboard from "./components/admin/AdminDashboard";
+import Home from "./components/admin/Home/Home";
 import UserDashboard from "./components/user/UserDashboard";
 
 // Pages
@@ -12,8 +11,10 @@ import UserDashboard from "./components/user/UserDashboard";
 import { BrowserRouter , Switch, Route } from "react-router-dom";
 import Login from "./pages/login/Login";
 import Signup from "./pages/signup/Signup";
-import AdminHome from './pages/AdminHome';
+import AdminHome from './pages/AdminHome/AdminHome';
 import AdduserPage from "./pages/AdduserPage/AdduserPage";
+import AllusersPage from "./pages/AllusersPage/AllusersPage";
+
 
 // Routes
 import UserRoute from "./components/user/UserRoute";
@@ -35,6 +36,7 @@ const App = () => (
           <AdminRoute exact path="/adminhome" component={AdminHome} />
           <Route exact path="/adduser" component={AdduserPage} />
           <Route exact path="/assigntask" component={AssigntaskPage} />
+          <Route exact path="/allusers" component={AllusersPage} />
 
 
       </Switch>
