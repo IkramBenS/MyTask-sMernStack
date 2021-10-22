@@ -2,8 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 // redux
 import {useDispatch} from 'react-redux';
-/* import  {deleteProduct} from '../redux/actions/productActions'; */
 import './Card.css';
+import { deleteUser } from '../redux/actions/userActions';
 
 const Card= ({ user }) => {
     const dispatch = useDispatch();
@@ -23,8 +23,7 @@ const Card= ({ user }) => {
 
                 <div className="col-md-4">
                     <Link
-                        /* to = {`/admin/edit/product/${product._id}`} */
-                        to = "#"
+                        to = {`/admin/edit/user/${user._id}`}
                         type='button'
                         className='btn btn-outline-info btn-block mb-4'
                         >
@@ -35,7 +34,7 @@ const Card= ({ user }) => {
                     <button 
                         type='button' 
                         className='btn btn-outline-danger btn-block mb-4' 
-                        /* onClick={() => dispatch(deleteProduct(product._id))} */
+                        onClick={() => dispatch(deleteUser(user._id))}
                     >
                         <i className='far fa-trash-alt pr-1'></i>
                             Delete

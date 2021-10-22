@@ -3,8 +3,9 @@ import React from "react";
 // Components
 
 import Header from "./components/header/Header";
-import Home from "./components/admin/Home/Home";
+import Homeapp from "./components/Homeapp/Homeapp";
 import UserDashboard from "./components/user/UserDashboard";
+import AdminEditUser from "./components/admin/AdminEditUser"
 
 // Pages
 
@@ -27,7 +28,7 @@ const App = () => (
     <Header />
     <main>
       <Switch>
-          <Route exact path='/' component={Home} />
+          <Route exact path='/' component={Homeapp} />
           <Route exact path="/signin" component={Login}></Route>
           <Route exact path="/signup" component={Signup}></Route>
           {/* <AdminRoute exact path="/admin/dashboard" component={AdminDashboard} /> */}
@@ -38,6 +39,10 @@ const App = () => (
           <Route exact path="/assigntask" component={AssigntaskPage} />
           <Route exact path="/allusers" component={AllusersPage} />
 
+          <AdminRoute 
+              exact 
+              path ='/admin/edit/user/:userId' 
+              component={AdminEditUser} />
 
       </Switch>
     </main>

@@ -30,5 +30,4 @@ const AllusersPage = () => {
 
   );
 };
-
 export default AllusersPage;

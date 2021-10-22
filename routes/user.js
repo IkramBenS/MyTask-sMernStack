@@ -1,8 +1,13 @@
 const express = require("express");
 const router = express.Router();
+const { autenticatateJWT } = require('../middlware/authenticator');
 
-const {readAll} = require("../controllers/user");
+const userController = require('../controllers/user');
 
-router.get("/", readAll);
+
+router.get("/", userController.readAll);
+router.delete("/:userId",autenticatateJWT, userController.delete);
+router.get("/:userId", userController.read);
+router.put("/:userId",autenticatateJWT, userController.update);
 
 module.exports = router;

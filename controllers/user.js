@@ -49,7 +49,54 @@ exports.readAll = async (req, res) => {
               }                   
           };
 
+/* delte user controller */
+exports.delete = async (req, res) => {              
+  try { 
+       const userId = req.params.userId;
+       const deletedUser = await User.findByIdAndDelete(userId);
 
+       /* fs.unlink(`uploads/${deletedProduct.fileName}`, (err) => {
+           if (err) throw err;
+           console.log(
+              'Image successfuly deleted from filesystem: ',
+              deletedProduct.fileName
+               );
+       });
+       */
+       res.json(deletedUser);
+  } catch (err) {
+      console.log (err, 'userController.delete error');
+      res.status(500).json({
+      errorMessage: 'please try again later'
+          });
+      }                   
+  };
+/* read user controller */
+  exports.read = async (req, res) => {              
+    try {
+        const userId = req.params.userId
 
+        const user = await User.findById(userId);
+        console.log(user);
+            
+        res.json(user);
 
+    } catch (err) {
+        console.log (err, 'userController.read error');
+        res.status(500).json({
+        errorMessage: 'please try again later'
+                    });
+                }                   
+            };
 
+/* update user controller */
+exports.update = async (req, res) => {
+  const userId = req.params.userId;
+
+  const oldUser = await User.findByIdAndUpdate(userId);
+  
+
+  res.json({
+    successMessage: 'User successfully updated',
+  });
+};

@@ -1,5 +1,7 @@
 import { 
-    GET_USERS
+    DELETE_USER,
+    GET_USERS,
+    GET_USER,
     /* CREATE_USER */
 } from '../constants/userConstants';
 
@@ -17,6 +19,14 @@ const userReducer = (state = INITIAL_STATE, action) => {
             return {
                 users: [...action.payload],
             };
+        case GET_USER:
+            return {
+                user: action.payload,
+            };
+        case DELETE_USER:
+            return {
+                users: state.users.filter(p => p._id !== action.payload._id)
+            }
             default:
                 return state;
     }
