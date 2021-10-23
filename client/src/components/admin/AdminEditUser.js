@@ -10,6 +10,7 @@ const AdminEditUser = ({ match, history }) => {
      * PARAMETRES
      ********************************/ 
     const userId = match.params.userId;
+	console.log(userId);
 
      /********************************
      * REDUX GLOBAL STATE PROPERTIES
@@ -53,14 +54,12 @@ const AdminEditUser = ({ match, history }) => {
 		formData.append('title', title);
 		formData.append('tel', tel);
 
-		const config = {
-			headers: {
-				'Content-Type': 'multipart/form-data',
-			},
-		};
+	const dataToSend ={username,email,title,tel};
+	console.log(dataToSend);
+
 
 		await axios
-			.put(`/api/users/${userId}`, formData, config)
+			.post(`/api/users/${userId}`, dataToSend)
 			.then(res => {
 				history.push('/allusers'); 
 			})
@@ -68,7 +67,6 @@ const AdminEditUser = ({ match, history }) => {
 				console.log(err);
 			});
 	};
-
 
     /********************************
      * RENDER

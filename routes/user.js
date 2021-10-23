@@ -8,6 +8,6 @@ const userController = require('../controllers/user');
 router.get("/", userController.readAll);
 router.delete("/:userId",autenticatateJWT, userController.delete);
 router.get("/:userId", userController.read);
-router.put("/:userId",autenticatateJWT, userController.update);
+router.post("/:userId",autenticatateJWT, userController.update);
 
 module.exports = router;

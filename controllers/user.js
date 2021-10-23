@@ -92,10 +92,13 @@ exports.delete = async (req, res) => {
 /* update user controller */
 exports.update = async (req, res) => {
   const userId = req.params.userId;
+  console.log('req.body', req.body);
+  console.log('userId', userId);
 
-  const oldUser = await User.findByIdAndUpdate(userId);
+  const {username,email,title,tel}= req.body;
+  console.log(username)
+  const oldUser = await User.findByIdAndUpdate(userId,req.body);
   
-
   res.json({
     successMessage: 'User successfully updated',
   });
