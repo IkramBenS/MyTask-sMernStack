@@ -6,6 +6,7 @@ import Header from "./components/header/Header";
 import Homeapp from "./components/Homeapp/Homeapp";
 import UserDashboard from "./components/user/UserDashboard";
 import AdminEditUser from "./components/admin/AdminEditUser"
+import AdminEditProject from "./components/admin/AdminEditProject"
 
 // Pages
 
@@ -15,6 +16,7 @@ import Signup from "./pages/signup/Signup";
 import AdminHome from './pages/AdminHome/AdminHome';
 import AdduserPage from "./pages/AdduserPage/AdduserPage";
 import AllusersPage from "./pages/AllusersPage/AllusersPage";
+import AddprojectPage from "./pages/AddprojectPage/AddprojectPage";
 
 
 // Routes
@@ -38,6 +40,8 @@ const App = () => (
           <Route exact path="/adduser" component={AdduserPage} />
           <Route exact path="/assigntask" component={AssigntaskPage} />
           <Route exact path="/allusers" component={AllusersPage} />
+          <Route exact path="/addproject" component={AddprojectPage} />
+          <Route exact path="/admin/edit/project/:projectId" component={AdminEditProject} />
 
           <AdminRoute 
               exact 

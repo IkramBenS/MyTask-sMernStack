@@ -77,7 +77,6 @@ exports.delete = async (req, res) => {
         const userId = req.params.userId
 
         const user = await User.findById(userId);
-        console.log(user);
             
         res.json(user);
 
