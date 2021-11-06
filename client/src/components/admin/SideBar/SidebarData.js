@@ -32,6 +32,7 @@ export const SidebarData = [
   {
     title: "Projects",
     icon: <FolderIcon />,
+    path: '/addproject',
   },
   {
     title: "Tasks",

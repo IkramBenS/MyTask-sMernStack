@@ -1,6 +1,6 @@
 import React from "react";
 
-import Card from '../Card';
+import CardProj from '../CardProj';
 // redux
 import { useSelector } from 'react-redux';
 
@@ -14,7 +14,7 @@ const Allprojects = () => {
   <div className='container'>
           <div>
             {projects && projects.map(project => (
-                    <Card key={project._id} project={project} />
+                    <CardProj key={project._id} project={project} />
               ))}
           </div>
   </div>
