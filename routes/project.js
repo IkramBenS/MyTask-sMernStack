@@ -4,11 +4,11 @@ const projectController = require('../controllers/project');
 const { authenticatateJWT } = require('../middlware/authenticator');
 
 
-router.post('/',authenticatateJWT, projectController.create);
-router.get('/', authenticatateJWT, projectController.readAll);
+router.post('/', projectController.create);
+router.get('/',  projectController.readAll);
 router.get("/:projectId", projectController.read);
-router.post("/:projectId",authenticatateJWT, projectController.update);
-router.delete("/:projectId", authenticatateJWT, projectController.delete);
+router.post("/:projectId", projectController.update);
+router.delete("/:projectId", projectController.delete);
 
 
 module.exports = router;

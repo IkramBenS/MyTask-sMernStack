@@ -1,20 +1,35 @@
 import React, { Fragment, useState } from "react";
 import "./Assigntask.css";
 //import { adduser } from "../../api/auth";
+import { useSelector } from "react-redux";
 
-function Assigntask() {
+
+const Assigntask = () => {
+  /****************************
+        * REDUX GLOBAL STATE PROPERTIES
+        ***************************/
+  const { projects } = useSelector(state => state.projects);
+  const { users } = useSelector(state => state.users);
+
   /*******************************************
    *VIEWS
    *******************************************/
-  const showAssignForm = () => (
+
+
+  return (
     <Fragment>
       <h3 className="text1">Assign New Task</h3>
-
       <div className="form-row">
         <div className="form-group col-md-6">
           <label className="text-secondary">Projects</label>
           <select className="custom-select mr-sm-2">
             <option value="">Choose one...</option>
+            {projects &&
+              projects.map((p) => (
+                <option key={p._id} value={p._id}>
+                  {p.project}
+                </option>
+              ))}
           </select>
         </div>
 
@@ -22,6 +37,12 @@ function Assigntask() {
           <label className="text-secondary">Assign to </label>
           <select className="custom-select mr-sm-2">
             <option value="">Users...</option>
+            {users &&
+              users.map((u) => (
+                <option key={u._id} value={u._id}>
+                  {u.username}
+                </option>
+              ))}
           </select>
         </div>
       </div>
@@ -45,8 +66,6 @@ function Assigntask() {
       </div>
     </Fragment>
   );
-
-  return <div className="forum_inputs container">{showAssignForm()}</div>;
 }
 
 export default Assigntask;
