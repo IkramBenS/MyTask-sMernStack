@@ -5,6 +5,7 @@ import userReducers from './reducers/userReducers';
 import loadingReducer from './reducers/loadingReducers';
 import messageReducer from './reducers/messageReducers';
 import projectReducer from "./reducers/projectReducers";
+import taskReducer from "./reducers/taskReducers";
 
 
 const reducer = combineReducers({
@@ -12,6 +13,7 @@ const reducer = combineReducers({
     messages: messageReducer,
     users: userReducers,
     projects: projectReducer,
+    tasks:taskReducer,
 
 });
 
