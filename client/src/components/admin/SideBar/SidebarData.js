@@ -37,6 +37,8 @@ export const SidebarData = [
   {
     title: "Tasks",
     icon: <AssignmentIcon />,
+    path: '/alltasks',
+
   },
   {
     title: "Completed",

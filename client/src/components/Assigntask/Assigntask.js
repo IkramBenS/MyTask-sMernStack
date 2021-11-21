@@ -46,6 +46,7 @@ const Assigntask = () => {
    const {
     taskProj,
     taskUser,
+    // TaskuserID,
     taskTitle,
     taskDesc,
    } = taskData;
@@ -80,18 +81,17 @@ const handleTaskSubmit = evt => {
       setClientSideError('Please select a user')
   }  else { 
 
-const dataToSend = {taskTitle,taskDesc,taskProj,taskUser,taskStatus:'NEW'};
-
-
+const dataToSend = {taskTitle,taskDesc,taskProj,taskUser,/*TaskuserID*/taskStatus:'NEW'};
       dispatch(createTask(dataToSend));
       setTaskData({
         taskProj: '',
         taskUser: '',
+        // TaskuserID: users._id,
         taskTitle: '',        
         taskStatus: '',
-        taskDesc: '',        
-       
-      });  
+        taskDesc: '',          
+      });
+  
 };
 }
   /*******************************************
